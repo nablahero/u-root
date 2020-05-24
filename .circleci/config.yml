@@ -134,7 +134,7 @@ jobs:
       - run:
           name: Report coverage
           when: on_success
-          command: bash <(curl -s https://codecov.io/bash) 
+          command: bash <(curl -s https://codecov.io/bash) -f "/tmp/artifacts/coverage.html" 
   test-build:
     <<: *beefy-template
     steps:
