@@ -127,14 +127,13 @@ jobs:
           name: Test coverage
           command: |
             go test -coverprofile=c.out ./cmds/... ./pkg/...
-            go tool cover -html=c.out -o coverage.html
-            cp coverage.html /tmp/artifacts
+            cp c.out /tmp/artifacts
       - store_artifacts:
           path: /tmp/artifacts
       - run:
           name: Report coverage
           when: on_success
-          command: bash <(curl -s https://codecov.io/bash) -f "/tmp/artifacts/coverage.html" 
+          command: bash <(curl -s https://codecov.io/bash) -f "/tmp/artifacts/c.out" 
   test-build:
     <<: *beefy-template
     steps:
